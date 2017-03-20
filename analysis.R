@@ -55,9 +55,10 @@ summary(players.pca)
 ###Code obtained from website cited in report
 ### https://www.r-bloggers.com/computing-and-visualizing-pca-in-r/
 library(devtools)
-install_github("ggbiplot", "vqv")
+install_github("vqv/ggbiplot")
 
 library(ggbiplot)
+win.graph(800,800,10)
 g <- ggbiplot(players.pca, obs.scale = 1, var.scale = 1, 
               groups = playerData$Pos, ellipse = TRUE, 
               circle = TRUE)
@@ -65,6 +66,35 @@ g <- g + scale_color_discrete(name = '')
 g <- g + theme(legend.direction = 'horizontal', 
                legend.position = 'top')
 print(g)
+###end cited code
 
-# end cited code
+# normalize data to zero mean and 1 standard deviation
+for (i in 4:49){
+  playerData[,i] = scale(playerData[,i])
+}
 
+####MODELING
+
+#multiple regression
+
+y <- as.vector(playerData$X2016.17)
+x <- as.matrix(playerData[,4:49])
+
+regSal <- lm (y~x)
+regSal
+
+####EVALUATION
+summary(regSal)
+
+#plot points per game with its coefficient
+plot(playerData$PS.G, playerData$X2016.17)
+abline(regSal$coefficients[1],regSal$coefficients[27])
+
+#bind residual and players
+resids <- cbind(playerData$Player, residuals(regSal))
+
+#order by undervalued first
+resids <- resids[order(resids[,2]),]
+resids[1:5,1]   #5 most underpaid
+n <- nrow(resids)
+resids[(n-4):n,1]  #5 most overpaid
