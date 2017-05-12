@@ -1,7 +1,9 @@
 # NBA Salary Analysis
 NOTE: The statistics used for this analysis are for the 2016-2017 NBA season
 salaries: http://www.basketball-reference.com/contracts/players.html
+
 pergame: http://www.basketball-reference.com/leagues/NBA_2017_per_game.html
+
 advanced: http://www.basketball-reference.com/leagues/NBA_2017_advanced.html
 
 This project is a walk-through of some simple data analysis on National Basketball Association statistics. 
@@ -11,9 +13,12 @@ We create a linear regression model with feature as statistics and targets as sa
 
 # Problem Understanding
 In professional sports, contracts for players are often in the millions of dollars, an extremely large amount for most people to even think about. The National Basketball League (NBA) is no exception. Some players are earning more than $10,000,000 this year for their services to their team. 
-In this project, I would like to explore the things that make a player earn more money than other players. The project has two aims:
+In this project, I would like to explore the things that make a player earn more money than other players. The project has two aims: 
+
 1.	Build a model for predicting how much a player will earn (say next year)
+
 2.	Explore which players are over-valued and which players are under-valued
+
 Data analysis about the NBA has seen a rapid growth in the last 10 to 15 years. A result of this is new and interesting statistics about players that aim to show their effectiveness at certain aspects of the game of basketball. A more detailed look at some of these statistics is in the Data Understanding section, but I will use these advanced statistics, as well as more traditional statistics about players, as player features and their salaries for this years as target variables. Thus, we can perform a regression and use this model to learn interesting things about players and team, as well as predict how much money a player will make next year. 
 
 # Data Understanding
@@ -21,13 +26,13 @@ Our aim is to investigate the relationship between player statistics and player 
 The first dataset is simply the player salaries. It contains the name of the player, the team they play for, and their salaries for the rest of their contract (sometimes many years). For this project, we are only interested about the salaries of this year. After loading the dataset, we can first do some exploratory data analysis to get a feel for the data:
 
 Summary: 
-    Player               Tm               X2016.17       
- Length:590         Length:590         Min.   :   11534  
- Class :character   Class :character   1st Qu.:  732504  
- Mode  :character   Mode  :character   Median : 2245440  
-                                       Mean   : 4996426  
-                                       3rd Qu.: 6916667  
-                                       Max.   :30963450
+       Salary       
+    Min.   :   11534  
+   1st Qu.:  732504  
+    Median : 2245440  
+    Mean   : 4996426  
+    3rd Qu.: 6916667  
+    Max.   :30963450
 
 We can see there are 590 players with contracts ranging from $11,534 this year to $30,963,450.
 A frequency plot of the salaries:
