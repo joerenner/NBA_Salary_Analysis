@@ -44,15 +44,15 @@ Since it slightly resembles a log-normal distribution, we do a frequency plot th
  ![alt text](https://cloud.githubusercontent.com/assets/11395913/25955914/ba467686-366a-11e7-8d8c-2fa52219ab3c.png)
  
 The small normal curve to the left of the above plot could possibly be the contracts for the development league of the NBA, a secondary league where NBA teams send their young players to develop before playing in NBA games. 
-The next dataset we import is the traditional statistics for each player for this year (up to March 11th). This includes information such as how many games they have played in, the average number of minutes they play in a game, the number of shots they take and make per game, the percentage of shot they make, the average number of rebounds, steals, blocks, assists, and points scored per game, as well as a couple other averages describing how a player plays. A subset of the summary is shown below:
+The next dataset we import is the traditional statistics for each player for this year (up to March 11th). This includes information such as how many games they have played in, the average number of minutes they play in a game, the number of shots they take and make per game, the percentage of shot they make, the average number of rebounds, steals, blocks, assists, and points scored per game, as well as a couple other averages describing how a player plays. A summary of the points per game statistic is shown:
 
-           BLK             TOV              PF            PS.G       
- Min.   :0.000       Min.   :0.000      Min.   :0.00   Min.   : 0.000  
- 1st Qu.:0.100      1st Qu.:0.500       1st Qu.:1.20   1st Qu.: 4.125  
- Median :0.300      Median :0.900       Median :1.70   Median : 6.800  
- Mean   :0.393      Mean   :1.098       Mean   :1.68   Mean   : 8.427  
- 3rd Qu.:0.500      3rd Qu.:1.400       3rd Qu.:2.20   3rd Qu.:10.975  
- Max.   :3.000      Max.   :5.700       Max.   :3.90   Max.   :31.600
+ PS.G       
+Min.   : 0.000  
+1st Qu.: 4.125  
+Median : 6.800  
+Mean   : 8.427  
+3rd Qu.:10.975  
+Max.   :31.600
  
 These are the summary statistics for (in order) blocks, turnovers, fouls, and points scored per game. Seeing how points determine the outcome of the game, here is a frequency plot of points scored:
 
