@@ -1,5 +1,8 @@
 # NBA Salary Analysis
-NOTE: The statistics used for this analysis are for the 2016-2017 NBA season THROUGH THE BEGINNING OF MARCH (you can get the full season stats at basketball-reference.com)
+NOTE: The statistics used for this analysis are for the 2016-2017 NBA season
+salaries: http://www.basketball-reference.com/contracts/players.html
+pergame: http://www.basketball-reference.com/leagues/NBA_2017_per_game.html
+advanced: http://www.basketball-reference.com/leagues/NBA_2017_advanced.html
 
 This project is a walk-through of some simple data analysis on National Basketball Association statistics. 
 The data is player salaries, per-game stats, and advanced metrics.
@@ -48,7 +51,7 @@ The next dataset we import is the traditional statistics for each player for thi
  
 These are the summary statistics for (in order) blocks, turnovers, fouls, and points scored per game. Seeing how points determine the outcome of the game, here is a frequency plot of points scored:
 
- ![alt text](https://cloud.githubusercontent.com/assets/11395913/25955984/e9aff618-366a-11e7-8671-ea30ff3a603d.png)
+ ![alt text](https://cloud.githubusercontent.com/assets/11395913/26002130/eafd2d00-372e-11e7-8e35-a05cc6b8953e.png)
  
 It has a similar shape to the salary frequency plot. 
 The last dataset we will import is a dataset of what are called “advanced metrics”. These statistics are calculated using the traditional statistics described above to try and more accurately describe how a player plays. Some examples of advanced metrics are the following (descriptions are from basketball-reference.com):
@@ -61,7 +64,7 @@ BPM: Box Plus/Minus. A normalized estimate of how much a player contributes to a
 These are in addition to other advanced metrics in the dataset. Overall, these advanced metrics attempt to separate a player’s production from the playing style of the team, hoping to give a more objective look at a player’s production. 
 As an example of a normalized metric, here is a frequency plot of for the BPM metric:
 
- ![alt text](https://cloud.githubusercontent.com/assets/11395913/25955991/f0e3a5b0-366a-11e7-922c-367a17bc13d9.png)
+ ![alt text](https://cloud.githubusercontent.com/assets/11395913/26002178/21a27e0a-372f-11e7-894a-100adf3ec161.png)
  
 As anticipated (since it is normalized), it resembles a normal curve. 
 # Data Preparation
@@ -70,7 +73,7 @@ Next, we prepare the traditional and advanced statistics before we can merge the
 Now, the datasets are ready to merge. We do this by first performing a SQL-style join on the statistics datasets by the player name and team name. Then, we join this dataset with the salaries by player name and team name again. We are left with a dataset that contains player name, team name, position, age, traditional and advanced statistics, and finally, salary. This datasets has 434 players and 50 variables. 
 Next, we do a principle component analysis on all variables except player name, team, position, and salary. A summary shows that over 97% of the variance is contained in the first 20 components, while the other 26 components make up just 3% of the variance. We can visualize the PCA using code from a PCA tutorial (https://www.r-bloggers.com/computing-and-visualizing-pca-in-r/):
 
- ![alt text](https://cloud.githubusercontent.com/assets/11395913/25956060/11880ad6-366b-11e7-8489-e824696e8546.png)
+ ![alt text](https://cloud.githubusercontent.com/assets/11395913/26002248/595579f6-372f-11e7-94fa-329a4351a888.png)
  
 From the plot we can see the Centers (C) and Power Forward (PF) positions (the biggest guys) have the best scores for the component more related to rebounding and blocking shots (ORB,TRB,BLK,DRB), while the Point Guard (PG), Shooting Guard (SG), and Small Forward (SF) positions (smaller guys) have better scores for the shooting (especially 3-point shooting: X3PA, X3P) and assists. 
 As the last step before modeling, we normalize the features to have zero mean and a standard deviation of 1.
