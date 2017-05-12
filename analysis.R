@@ -86,10 +86,6 @@ regSal
 ####EVALUATION
 summary(regSal)
 
-#plot points per game with its coefficient
-plot(playerData$PS.G, playerData$X2016.17)
-abline(regSal$coefficients[1],regSal$coefficients[27])
-
 #bind residual and players
 resids <- cbind(playerData$Player, residuals(regSal))
 
